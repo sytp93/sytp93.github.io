@@ -8,4 +8,4 @@ share-img: /assets/img/path.jpg
 tags: [books, test]
 ---
 
-나만의 블로그 활동을 시작하기 위해 git pages를 이용해 블로그를 만들었다.
+나만의 블로그 활동을 시작하기 위해 git pages를 이용해 블로그를 만들었다.ㄴ
