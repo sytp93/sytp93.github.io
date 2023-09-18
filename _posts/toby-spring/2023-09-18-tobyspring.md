@@ -86,4 +86,57 @@ Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/users?ch
 > 프로그래밍의 기초 개념 중에 관심사의 분리(Separation of Concerns)라는 게 있다. 이를 객체지향에 적용해보면, 관심이 같은 것끼리는
 하나의 객체 안으로 또는 친한 객체로 모이게 하고, 관심이 다른 것은 가능한 한 따로 떨어져서 서로 영향을 주지 않도록 분리하는 것이라고 생각할 수 있다.
 
+다시 DAO 코드로 돌아가 보겠다.
+
+```java
+public class UserDao {
+    public void add(User user) throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/users?characterEncoding=UTF-8", "root",
+                "1234");  //--> 관심사1 (DB 커넥션)
+
+        PreparedStatement ps = c.prepareStatement(
+                "insert into users(id, name, password) values(?,?,?)"); 
+        ps.setString(1, user.getId());
+        ps.setString(2, user.getName());
+        ps.setString(3, user.getPassword()); 
+        ps.executeUpdate(); //--> 관심사2 (SQL 실행)
+
+        ps.close();
+        c.close(); //--> 관심사3 (커넥션 close)
+    }
+}
+```
+
+교재를 보면 현재 작성된 DAO를 3가지 관심사로 분리해 냈다. 먼저 첫번째 관심사인 DB 커넥션의 분리를 적용시켜보겠다.
+
+```java
+public class UserDao {
+    public void add(User user) throws ClassNotFoundException, SQLException {
+        Connection c = getConnection(); 
+
+        PreparedStatement ps = c.prepareStatement(
+                "insert into users(id, name, password) values(?,?,?)"); 
+        ps.setString(1, user.getId());
+        ps.setString(2, user.getName());
+        ps.setString(3, user.getPassword()); 
+        ps.executeUpdate();
+
+        ps.close();
+        c.close();
+    }
+
+    private Connection getConnection() throws ClassNotFoundException,
+			SQLException {
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/users?characterEncoding=UTF-8", "root",
+                "1234");
+		return c;
+	}
+}
+```
+
+기존에 add 메소드 안에서 커넥션을 생성하던 부분을 getConnection이라는 메소드로 분리 시켰다. 그리고 add 메소드에서는 getConnection을 가져다 쓸 뿐이다.
+> DB 연결과 관련된 부분에 변경이 일어났을 경우 앞으로는 getConnection()이라는 한 메소드의 코드만 수정하면 된다.
+
 
