@@ -8,7 +8,7 @@ share-img: ./assets/img/path.jpg
 tags: [project]
 ---
 
-# JPA 사용을 위한 entity를 DTO 객체로 전달
+# JPA 사용을 위한 entity를 DTO 객체로 전달 2
 
 [next.js and Spring-boot (2)](https://sytp93.github.io/2023-09-17-third/)
 
@@ -45,8 +45,13 @@ public class ChargerDTO {
     private String chargerBrand;
     private String chargerStatus;
 
-    public ChargerDTO(long chargerId) {
+    public ChargerDTO(long chargerId, String chargerCode, String chargerName, String chargerPrice, String chargerBrand, String chargerStatus) {
         this.chargerId = chargerId;
+        this.chargerCode = chargerCode;
+        this.chargerName = chargerName;
+        this.chargerPrice = chargerPrice;
+        this.chargerBrand = chargerBrand;
+        this.chargerStatus = chargerStatus;
     }
 }
 
@@ -98,7 +103,7 @@ public class ChargerService {
 Service에서 데이터를 find하고 해당 리스트를 DTO 리스트에 담는 단순조회를 구현하였다.
 다음부터는 로그 확인을 습관 시 하자, 로그에 답이 있다.
 
-다시 확인해보니 내가 사용하고 있는 방식에는 Mapper에 Mapping 한 target과 source의 getter 존재해야 하고, DTO에  그 변수를 파라미터로 받는 생성자가 존재해야 
+다시 확인해보니 내가 사용하고 있는 방식에는 Mapper에 Mapping 한 target과 source의 getter가 존재해야 하고, DTO에 생성자가 존재해야 
 _No property named "chargerId" exists in source parameter(s). Did you mean "null"?_ 
-이 오류가 발생하지 않는다. 이 원리에 대해서는 아직 잘 모르겠어서 조금 공부를 해봐야 알 것 같다.
+이 오류가 발생하지 않는다. 
 
