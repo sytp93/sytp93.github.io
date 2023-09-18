@@ -31,6 +31,25 @@ public class Charger {
     private String chargerBrand;
     private String chargerStatus;
 }
+
+// ===== DTO ======
+@Data
+@Getter
+@Setter
+@NoArgsConstructor
+public class ChargerDTO {
+    private long chargerId;
+    private String chargerCode;
+    private String chargerName;
+    private String chargerPrice;
+    private String chargerBrand;
+    private String chargerStatus;
+
+    public ChargerDTO(long chargerId) {
+        this.chargerId = chargerId;
+    }
+}
+
 ```
 내가 작성한 entity 코드이다. 오류가 발생할때 당시의 코드에는 @Table 테이블을 매핑해주는 어노테이션이 존재하지 않아서 해당 오류가 발생했다.
 server log에 JPA 쿼리를 실행시키는 로그만 찍었더라면 어떤 문제인지를 금방 파악했을텐데... 그것을 찍지 않아서 발생한 매우 어리석은 실수였다. 
@@ -48,12 +67,12 @@ public interface ChargerMapper {
 
     @Mapping(target = "chargerId", source = "chargerId")
     @Named("v2")
-    ChargerList chargerDTO(Charger charger);
+    ChargerDTO entityToDto(Charger charger);
 
     @IterableMapping(qualifiedByName = "v2")
-    List<ChargerList> entityToDtoList(List<Charger> charger);
+    List<ChargerDTO> entityToDtoList(List<Charger> charger);
 
-    Charger dtoToEntity(ChargerList chargerList);
+    Charger dtoToEntity(ChargerDTO chargerDTO);
 
 }
 ```
@@ -70,7 +89,7 @@ public class ChargerService {
     public List<ChargerList> getAllChargers() {
 
         List<Charger> chargers = (List<Charger>) chargerRepository.findAll();
-        List<ChargerList> chargerLists = ChargerMapper.mapper.entityToDtoList(chargers);
+        List<ChargerDTO> chargerLists = ChargerMapper.mapper.entityToDtoList(chargers);
         return chargerLists;
     }
 }
@@ -78,4 +97,8 @@ public class ChargerService {
 
 Service에서 데이터를 find하고 해당 리스트를 DTO 리스트에 담는 단순조회를 구현하였다.
 다음부터는 로그 확인을 습관 시 하자, 로그에 답이 있다.
+
+다시 확인해보니 내가 사용하고 있는 방식에는 Mapper에 Mapping 한 target과 source의 getter 존재해야 하고, DTO에  그 변수를 파라미터로 받는 생성자가 존재해야 
+_No property named "chargerId" exists in source parameter(s). Did you mean "null"?_ 
+이 오류가 발생하지 않는다. 이 원리에 대해서는 아직 잘 모르겠어서 조금 공부를 해봐야 알 것 같다.
 
