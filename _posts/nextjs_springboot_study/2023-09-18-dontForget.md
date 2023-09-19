@@ -94,11 +94,46 @@ public class ChargerService {
     }
 }
 ```
+기본적인 동작은 생각안하고 무작정 가져다 붙이기만 해서 몇시간이나 씨름했던 문제였다. mapper가 빌드 됐을때 생성되는 MapperImpl이라는 클래스가 있다.
+```java
+public class ChargerMapperImpl implements ChargerMapper {
+    public ChargerMapperImpl() {
+    }
 
-Service에서 데이터를 find하고 해당 리스트를 DTO 리스트에 담는 단순조회를 구현하였다.
-다음부터는 로그 확인을 습관 시 하자, 로그에 답이 있다.
+    public ChargerDTO chargerDTO(Charger charger) {
+        if (charger == null) {
+            return null;
+        } else {
+            ChargerDTO chargerDTO = new ChargerDTO();
+            chargerDTO.setChargerId(charger.getChargerId());
+            chargerDTO.setChargerCode(charger.getChargerCode());
+            chargerDTO.setChargerName(charger.getChargerName());
+            chargerDTO.setChargerPrice(charger.getChargerPrice());
+            chargerDTO.setChargerBrand(charger.getChargerBrand());
+            chargerDTO.setChargerStatus(charger.getChargerStatus());
+            return chargerDTO;
+        }
+    }
 
-다시 확인해보니 내가 사용하고 있는 방식에는 Mapper에 Mapping 한 target과 source의 getter가 존재해야 하고, DTO에 생성자가 존재해야 
-_No property named "chargerId" exists in source parameter(s). Did you mean "null"?_ 
-이 오류가 발생하지 않는다. 
+        public List<ChargerDTO> entityToDtoList(List<Charger> charger) {
+        if (charger == null) {
+            return null;
+        } else {
+            List<ChargerDTO> list = new ArrayList(charger.size());
+            Iterator var3 = charger.iterator();
 
+            while(var3.hasNext()) {
+                Charger charger1 = (Charger)var3.next();
+                list.add(this.chargerDTO(charger1));
+            }
+
+            return list;
+        }
+    }
+}
+```
+보면 entity를 받아서 반복문을 돌려 entity의 데이터를 get하고 그 데이터를 Dto에 Set하는 구조이다. 그러니 당연하게 DTO에는 Setter가 존재해야하고, entity에는 Getter가 존재해야 한다. 그리고 해당 파라미터를 받을 생성자도 당연히 존재해야 하는 것이고, 그리고 원인은 모르겠지만 entity에 table 맵핑을 해줘야한다.
+해당 라이브러리의 동작 방식을 생각하지 않고 무작정 가져다쓰는 습관은 고쳐야 된다. 돌아간다고 다가 아니고 어떻게 돌아가는지를 알아야 이슈 트래킹이 가능하기 때문이다.
+이 문제만해도 내가 이런 기본적인 구조만 생각을 해봤으면 금방 원인을 찾고 해결했을 것이다. 코딩을 하면서 생각을 하자.
+
+계속 같은 문제가 발생한다. 결국에는 dto와 entity에 @Builder 어노테이션도 붙어있어야 오류없이 작동이 됐다.
