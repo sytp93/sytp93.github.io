@@ -104,6 +104,6 @@ Service에서 데이터를 find하고 해당 리스트를 DTO 리스트에 담�
 다음부터는 로그 확인을 습관 시 하자, 로그에 답이 있다.
 
 다시 확인해보니 내가 사용하고 있는 방식에는entity에 Table 매핑을 하고, Mapper에 Mapping 한 target과 source의 getter가 존재해야 하고, DTO에 생성자가 존재해야 
-__**No property named "chargerId" exists in source parameter(s). Did you mean "null"?**__ 
+**No property named "chargerId" exists in source parameter(s). Did you mean "null"?**
 이 오류가 발생하지 않는다. 
 
