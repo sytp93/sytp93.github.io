@@ -12,7 +12,7 @@ tags: [project]
 
 [next.js and Spring-boot (2)](https://sytp93.github.io/2023-09-17-third/)
 
-저번 포스트에서 mapstruct를 사용하다 어려움이 있어서 단순 for문으로 처리를 했는데, 복기를 해보니 매우 바보같은 방법이였다.
+저번 포스트에서 mapstruct를 사용하다 어려움이 있어서 단순 for문으로 처리를 했는데, 다시 mapstruct 적용을 시도 해보았다.
 그리고 _No property named "chargerId" exists in source parameter(s). Did you mean "null"?_ 해결했다.
 ```java
 @Entity
