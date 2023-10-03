@@ -192,8 +192,8 @@ Dao의 변경없이 connection만 바꾸어서 Dao를 사용이 가능하다.
 >개방 폐쇄 원칙(OCP, Open-Closed Principle) 클래스나 모듈은 확장에는 열려 있어야 하고 변경에는 닫혀있어야 한다.
 
 ### 객체지향 설계 원칙(SOLID)
-SRP(The Single Responsibility Principle): 단일 책임 원칙
-OCP(The Open Closed Principle): 개방 폐쇄 원칙
-LSP(The Liskov Subsititution Principle): 리스코프 치환 원칙
-ISP(The interface Segregation Principle): 인터페이스 분리 원칙
-DIP(The Dependency inversion Principle): 의존관계 역전 원칙
+1. SRP(The Single Responsibility Principle): 단일 책임 원칙
+2. OCP(The Open Closed Principle): 개방 폐쇄 원칙
+3. LSP(The Liskov Subsititution Principle): 리스코프 치환 원칙
+4. ISP(The interface Segregation Principle): 인터페이스 분리 원칙
+5. DIP(The Dependency inversion Principle): 의존관계 역전 원칙
