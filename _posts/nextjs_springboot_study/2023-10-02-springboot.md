@@ -5,7 +5,7 @@ subtitle: 스프링부트 테스트코드 작성
 cover-img: ./assets/img/path.jpg
 thumbnail-img: ./assets/img/thumb.png
 share-img: ./assets/img/path.jpg
-tags: [study]
+tags: [project]
 ---
 
 ## 환경설정
