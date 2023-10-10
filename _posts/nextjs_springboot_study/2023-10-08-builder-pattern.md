@@ -155,3 +155,47 @@ public class ChargerService {
 ```
 
 눈에 띄게 코드가 간단해진것을 볼 수 있다. 롬복(lombok) 어노테이션을 사용한다는게 매우 편하고 생산성이 올라가는 일이기는 하지만 필요한 지식을 얻지 못하게 하는데 안좋은쪽으로 도움을 주는 기능인 것 같다.
+
+빌더 패턴을 다른 방식으로 적용할 수 있는것을 알게 되어서 기록을 남긴다.
+
+```java
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class ChargerDto {
+    private long chargerId;
+    private String chargerCode;
+    private String chargerName;
+    private String chargerPrice;
+    private String chargerBrand;
+    private String chargerStatus;
+
+
+    @Builder
+    public Charger toUpdateEntity () {
+        return Charger.builder()
+                .chargerId(chargerId)
+                .chargerName(chargerName)
+                .chargerCode(chargerCode)
+                .chargerPrice(chargerPrice)
+                .chargerBrand(chargerBrand)
+                .chargerStatus(chargerStatus)
+                .build();
+    }
+}
+```
+
+entity에 생성자 메소드를 생성하고, 그 다음 DTO에 entity를 리턴해주는 메소드 하나를 생성한 뒤 그 안에 entity.builder를 리턴해준다.
+이렇게 만들어 놓게되면 아래와 같이 가독성도 좋아지고 필요할때 번거롭게 생성해주지 않아도 되고 해당 메소드를 호출해주면 된다.
+```java
+@Service
+public class ChargerService {
+	@Transactional
+    public void createCharger(ChargerDto chargerDto) {
+        Charger charger = chargerDto.toCreateEntity();
+        chargerRepository.save(charger);
+    }
+}
+```
+
