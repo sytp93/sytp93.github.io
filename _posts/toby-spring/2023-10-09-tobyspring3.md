@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 토비의 스프링 3.1 (2)
+title: 토비의 스프링 3.1 (3)
 subtitle: 1장 오브젝트와 의존관계
 cover-img: ./assets/img/background/gray.png
 thumbnail-img: ./assets/img/springboot-logo.png
