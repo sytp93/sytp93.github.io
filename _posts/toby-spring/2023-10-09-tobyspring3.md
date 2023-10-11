@@ -49,7 +49,7 @@ public class UserMain {
 
 제어의역전(IoC) 자신은 존재하고 있고 자신을 필요한 곳에서 호출해서 사용한다. 다만 자신은 언제 어떻게 사용될지를 모른다.
 
-## 1.5 스프링의 IoC
+## 1.5 스프링의 IoC (Inversion of Control)
 
 이번에는 스프링 frame-work를 사용하여 IoC를 구현해보겠다.
 
@@ -88,7 +88,7 @@ public class UserMain {
 어플리케이션컨텍스트 생성 후 컨텍스트에서 userDao Bean을 호출해준다.
 
 
-## 1.7 의존관계 주입 (DI)
+## 1.7 의존관계 주입 (DI, Dependency Injection)
 
 ### 의존관계 주입
 
@@ -167,6 +167,8 @@ public class UserMain {
 ```
 
 ## 수정자 메소드를 이용한 DI 주입
+
+DI를 하는 방법 중 한가지이다.
 
 ### DAO
 ```java
