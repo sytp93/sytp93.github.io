@@ -1,6 +1,6 @@
 ---
 layout: post
-title: next.js and Spring-boot (5)
+title: next.js and Spring-boot (6)
 subtitle: 페이징 기능 적용
 cover-img: ./assets/img/background/gray.png
 thumbnail-img: ./assets/img/thumb.png
