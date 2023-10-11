@@ -2,7 +2,7 @@
 layout: post
 title: 토비의 스프링 3.1 (2)
 subtitle: 1장 오브젝트와 의존관계
-cover-img: ./assets/img/path.jpg
+cover-img: ./assets/img/background/gray.png
 thumbnail-img: ./assets/img/springboot-logo.png
 share-img: ./assets/img/path.jpg
 tags: [개발자로 성장하기,토비의 스프링3.1]

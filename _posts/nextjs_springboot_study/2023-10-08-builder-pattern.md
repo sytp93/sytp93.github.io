@@ -2,7 +2,7 @@
 layout: post
 title: next.js and Spring-boot (4)
 subtitle: dto to entity를 위한 Builder Pattern 적용
-cover-img: ./assets/img/path.jpg
+cover-img: ./assets/img/background/gray.png
 thumbnail-img: ./assets/img/thumb.png
 share-img: ./assets/img/path.jpg
 tags: [project]

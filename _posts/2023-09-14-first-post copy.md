@@ -2,9 +2,8 @@
 layout: post
 title: 연습용 첫 포스트
 subtitle: 깃 페이지 적용 확인
-cover-img: /assets/img/path.jpg
+cover-img: /assets/img/background/gray.png
 thumbnail-img: /assets/img/thumb.png
-share-img: /assets/img/path.jpg
 tags: [books, test]
 ---
 
