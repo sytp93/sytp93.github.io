@@ -8,10 +8,82 @@ share-img: /assets/img/path.jpg
 tags: [books, test]
 ---
 
-Under what circumstances should we step off a path? When is it essential that we finish what we start? If I bought a bag of peanuts and had an allergic reaction, no one would fault me if I threw it out. If I ended a relationship with a woman who hit me, no one would say that I had a commitment problem. But if I walk away from a seemingly secure route because my soul has other ideas, I am a flake?
+vscode에 개발환경 내 입맛에 맞게 구축하기
+dracula theme 사용
+java 개발을 위한 내 눈에 맞는 각각의 색깔 설정
+Settings.json
+```json
+{
+  "workbench.colorTheme": "One Dark Pro",
+  "editor.fontFamily": "JetBrains Mono",
+  "editor.fontSize": 14,
+  "editor.fontLigatures": true,
+  "editor.lineHeight": 21,
+  "editor.semanticTokenColorCustomizations": {
+    "[One Dark Pro]": {
+      "rules": {
+        "variable": "#ffffff",
+        "class": "#ffffff",
+        "keyword": "#6acc6f",
+        "annotation": "#6acc6f",
+        "interface": "#ffffff",
+        "method": "#78f5da",
+        "modifier": "#ff9900",
+        "property": "#7fcffd",
+        "struct": "#ff0000"
+      }
+      }
+    },
+    "editor.tokenColorCustomizations": {
+      "textMateRules": [{
+        "scope": "keyword.control",
+        "settings": {
+          "foreground": "#77e9b4"
+        }
+      }, {
+        "scope": "variable",
+        "settings": {
+          "foreground": "#f1fd83"
+        }
+      }
+  ]},
+  "workbench.colorCustomizations": {
+    
+    "tab.activeBackground": "#282c34",
+    "activityBar.background": "#282c34",
+    "sideBar.background": "#282c34",
+    "tab.activeBorder": "#d19a66",
+    "terminal.background": "#222222",
+    "terminal.foreground": "#ffffff",
+    "terminalCursor.background": "#E0E0E0",
+    "terminalCursor.foreground": "#E0E0E0",
+    "terminal.ansiBlack": "#000000",
+    "terminal.ansiBlue": "#6FB3D2",
+    "terminal.ansiBrightBlack": "#B0B0B0",
+    "terminal.ansiBrightBlue": "#6FB3D2",
+    "terminal.ansiBrightCyan": "#76C7B7",
+    "terminal.ansiBrightGreen": "#A1C659",
+    "terminal.ansiBrightMagenta": "#D381C3",
+    "terminal.ansiBrightRed": "#FB0120",
+    "terminal.ansiBrightWhite": "#FFFFFF",
+    "terminal.ansiBrightYellow": "#FDA331",
+    "terminal.ansiCyan": "#76C7B7",
+    "terminal.ansiGreen": "#A1C659",
+    "terminal.ansiMagenta": "#D381C3",
+    "terminal.ansiRed": "#FB0120",
+    "terminal.ansiWhite": "#E0E0E0",
+    "terminal.ansiYellow": "#FDA331"
+  },
+  "terminal.integrated.fontFamily": "D2Coding"
+}
+```
 
-The truth is that no one else can definitively know the path we are here to walk. It’s tempting to listen—many of us long for the omnipotent other—but unless they are genuine psychic intuitives, they can’t know. All others can know is their own truth, and if they’ve actually done the work to excavate it, they will have the good sense to know that they cannot genuinely know anyone else’s. Only soul knows the path it is here to walk. Since you are the only one living in your temple, only you can know its scriptures and interpretive structure.
+application.yml
+```yml
+spring:
+  output:
+    ansi:
+      enabled: always
+```
 
-At the heart of the struggle are two very different ideas of success—survival-driven and soul-driven. For survivalists, success is security, pragmatism, power over others. Success is the absence of material suffering, the nourishing of the soul be damned. It is an odd and ironic thing that most of the material power in our world often resides in the hands of younger souls. Still working in the egoic and material realms, they love the sensations of power and focus most of their energy on accumulation. Older souls tend not to be as materially driven. They have already played the worldly game in previous lives and they search for more subtle shades of meaning in this one—authentication rather than accumulation. They are often ignored by the culture at large, although they really are the truest warriors.
-
-A soulful notion of success rests on the actualization of our innate image. Success is simply the completion of a soul step, however unsightly it may be. We have finished what we started when the lesson is learned. What a fear-based culture calls a wonderful opportunity may be fruitless and misguided for the soul. Staying in a passionless relationship may satisfy our need for comfort, but it may stifle the soul. Becoming a famous lawyer is only worthwhile if the soul demands it. It is an essential failure if you are called to be a monastic this time around. If you need to explore and abandon ten careers in order to stretch your soul toward its innate image, then so be it. Flake it till you make it.
+spring frame-work 사용 시 application 파일에 위의 설정을 넣어줘야 vscode terminal에서 색깔 구분을 해준다
