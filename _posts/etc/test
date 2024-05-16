@@ -1,1 +1,5 @@
+csv 파일 생성할때 인코딩 설정을 하고싶으면 OutPutStreamWriter 객체 사용
+```java
+OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream("prdmst.csv"), "MS949");
+```
 test
