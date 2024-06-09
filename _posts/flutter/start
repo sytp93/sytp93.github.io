@@ -2,3 +2,8 @@ flutter 개발 환경 구성
 
 flutter는 개발을 위해 IDE는 안드로이드 스튜디오나 vsCode를 사용할 수 있는데,
 vsCode로 개발을 하려고 해도 안드로이드 스튜디오는 설치를 해야한다. 왜냐하면 에뮬레이터 실행은 안드로이드 스튜디오를 설치해야만 vsCode에서도 가상 에뮬레이터 실행이 가능하다.
+
+
+flutter clean
+
+flutter run pub --get
