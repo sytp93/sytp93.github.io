@@ -7,3 +7,7 @@ vsCode로 개발을 하려고 해도 안드로이드 스튜디오는 설치를 �
 flutter clean
 
 flutter run pub --get
+
+kotiln 버전 확인 setting.gradle, build.gradle 두 군데 다 확인
+
+에뮬레이터 버전이 낮으면 app-debug.apk를 install 하는 과정에서 무한 딜레이 되는 현상 발생 
