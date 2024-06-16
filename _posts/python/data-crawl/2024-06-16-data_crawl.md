@@ -1,3 +1,12 @@
+---
+layout: post
+title: 데이터 크롤링 흉내내기
+subtitle: 모바일게임 사이트 정보 크롤링
+cover-img: /assets/img/background/gray.png
+thumbnail-img: /assets/img/thumb.png
+tags: [python, data-crawl]
+---
+
 내가 하고있는 모바일 게임이 한글을 지원하지 않는 게임이고 정보를 얻을 수 있는 커뮤니티가 일어와 영어로 된 커뮤니티 밖에 존재하지 않아 그냥 내가 찾아보고 싶어서 일본 위키에 정리된 내용을 크롤링 흉내를 내보았다.
 
 단순하게 내 흥미를 위한 작업이기에 일정량 무료로 사용이 가능한 fire-store를 사용했다. 아무래도 개인 컴퓨터고 무료 서버를 이용하다보니 느리긴 하다.
